@@ -1,0 +1,215 @@
+[macro]
+SETN = "${_SETN|EN|$1}"
+DISCARD-COST-SELF = '''You can discard this card;'''
+BANISH-COST-SELF-GY = '''You can banish this card from your GY;'''
+BANISH-COST-FRIEND-GY = '''You can banish 1 "$1" card from your GY;'''
+SINGLE-HOPT = '''You can only use this effect of "$1" once per turn'''
+EACH-HOPT = '''You can only use each effect of "$1" once per turn'''
+SS-FRIEND-HAND = '''You can Special Summon 1 "$1" monster from your hand'''
+DIG-FRIEND-HAND = '''You can excavate the top $1 cards of your Deck, and if you do, you can add 1 excavated "$2" card to your hand, also place the rest on the bottom of your Deck in any order'''
+DIG-FRIEND1-HAND = '''You can excavate the top card of your Deck, and if you do, you can add 1 excavated "$1" card to your hand, also place the rest on the bottom of your Deck in any order'''
+STACK-ROCK = '''You can place $1 of your banished Rock monsters on top of your Deck'''
+HORTI = '''When this card is Normal or Special Summoned: Place this card face-up in your Field Zone as a Field Spell. If this card is placed in the Field Zone: You can reveal 1 "Horticopia Queen Ambrosé" in your hand, Deck, GY, or Field Zone; Apply the revealed card's effect that Special Summons a token, then'''
+HARVEST-TOKEN = '''This Token gains DEF equal to its Level x 100. This Token cannot be Tributed and cannot be used as material for a Fusion, Synchro, or Link Summon.'''
+FIELDS = '''Activate only if you control a face-up "Horticopia" Field Spell'''
+
+[card.Sustainium-Ore-Node]
+name = '''Sustainium Ore Node'''
+set = "sustainium"
+setnumber = "${SETN|000}"
+effect =  '''If this card is used as material for a Synchro Summon or is detached from a Xyz Monster to activate that monster's effect: You can activate 1 of the following effects.
+● ${STACK-ROCK}.
+● ${DIG-FRIEND1-HAND|Sustainium}.'''
+strings = ['''Excavate 1 card''', '''Place on top of deck''', '''Decline''', '''Add 1 excavated "Sustainium" card to your hand?''', '''Return 1 of your banished Rock monsters to the top of the deck?''',]
+
+[card.Sustainium-Mines-Groundbreaker]
+name = '''Sustainium Mines Groundbreaker'''
+set = "sustainium"
+setnumber = "${SETN|001}"
+effect = '''${DISCARD-COST-SELF} ${SS-FRIEND-HAND|Sustainium}. You cannot Link Summon the turn you activate this effect. ${BANISH-COST-SELF-GY} ${DIG-FRIEND1-HAND|Sustainium}.'''
+strings = ['''Special Summon''', '''Excavate 3''', '''Add 1 excavated "Sustainium" card to your hand?''']
+
+[card.Sustainium-Mines-Geologist]
+name = '''Sustainium Mines Geologist'''
+set = "sustainium"
+setnumber = "${SETN|002}"
+effect = '''If this card is Normal or Special Summoned; You can look at the top 5 cards of your Deck, and if you do, you can banish 1 of those cards, also place the rest on the top of your Deck in any order, then if you banished a monster card, this card's level becomes the level of the banished monster. If this banished card would be returned to the deck: You can Special Summon 1 level 3 or lower EARTH monster from your hand.'''
+strings = ['''Banish 1 card from the top 5 cards of your deck?''', '''Special Summon 1 level 3 or lower EARTH monster from your hand?''']
+
+[card.Sustainium-Mines-Deep-Diver]
+name = '''Sustainium Mines Deep Diver'''
+set = "sustainium"
+setnumber = "${SETN|003}"
+effect = '''If this card is banished: You can return 1 of your banished "Sustanium" monsters to the GY, except "Sustainium Mines Deep Diver". If this banished card is returned to the Deck: Shuffle your deck, then send the top 2 cards of your Deck to the GY.'''
+strings = ['''Return 1 of your banished "Sustanium" monsters to the GY?''']
+
+[card.Sustainium-Mines-Foreman]
+name = '''Sustainium Mines Foreman'''
+set = "sustainium"
+setnumber = "${SETN|004}"
+effect = '''If you control a "Sustainium" monster: You can banish 1 card from your GY; Special Summon this card from your hand, and if you do, increase its level by 2 and treat it as a Tuner while it is on the field. You cannot draw cards by card effects the turn you activate this effect. ${BANISH-COST-SELF-GY} You can place 1 of your banished "Sustainium" Spell/Trap cards on top of your Deck"'''
+strings = ['''Return 1 of your banished "Sustainium" Spell/Traps to the top of the deck?''']
+
+[card.Sustainium-Mines-Heavy-Mechanist]
+name = '''Sustainium Mines Heavy-Mechanist'''
+set = "sustainium"
+setnumber = "${SETN|005}"
+effect = '''2 level 3 Rock monsters'''
+
+[card.Sustainium-Powered-Compression-Forger]
+name = '''Sustainium-Powered Compression Forger'''
+set = "sustainium"
+setnumber = "${SETN|006}"
+effect = '''2 level 5 Tuner monsters
+Gains 1 Rank for each material attached to it. This card gains the appropriate effects based on whether monsters you control have higher total Levels or Ranks.
+● Levels: (Quick Effect): You can detach 1 material from this card, then target 1 face-up monster your opponent controls; change it to face-down Defense Position.
+● Ranks: If this card attacks a face-down monster, your opponent cannot activate cards or effects until the end of the Damage Step. At the start of the Damage Step, if this card attacks an opponent's facedown monster; Attach that monster to this card as a face-up Xyz Material.'''
+
+[card.Sustainium-Powered-Diamond-Force-Compactor]
+name = '''Sustainium-Powered Diamond-Force Compactor'''
+set = "sustainium"
+setnumber = "${SETN|007}"
+effect = '''3 level 7 Tuner monsters
+Gains 1 Rank for each material attached to it.'''
+
+[card.Sustainium-Crude-Ore-Refining]
+name = '''Sustainium Crude Ore Refining'''
+set = "sustainium"
+setnumber = "${SETN|020}"
+effect = '''Banish up to 3 Rock monsters in your GY (min.1); You can excavate a number of cards from the top of your deck equal to the number of Rock monsters you banished, and if you do, you can add 1 excavated "Sustainium" monster card to your hand, also place the rest on top of your Deck in any order. You can banish this card in yout GY, then target 3 of your banished Rock monsters and 1 of your other banished Tuner monsters; Shuffle all 3 of your banished Rock monsters into the deck, then return your banished Tuner monster to your hand.'''
+strings = ['''Add 1 excavated "Sustainium" card to your hand?''', '''Select 3 Rock mosnters.''' '''Select 1 Tuner monster.''']
+
+[card.Sustainium-Mines]
+name = '''Sustainium Mines'''
+set = "sustainium"
+setnumber = "${SETN|022}"
+effect = '''If a level 5 or higher Rock Tuner monster(s) is added to your hand, except by drawing, you can activate the appropriate effect, based on whether monsters you control have higher total Levels or Ranks.
+● Levels: Attach 1 level 5 or higher Rock Tuner monster from your hand to this card as material
+● Ranks: Special Summon 1 level 5 or higher Rock Tuner monster from your hand'''
+
+______________________________________________________________________________________________________________________________________________________________
+
+
+[card.Horticopia-Ananandina]
+name = '''Horticopia Ananandina'''
+set = "Horticopia"
+setnumber = "${SETN|100}"
+effect = '''${HORTI|Horticopia Ananandina} add 1 "Horticopia" Spell or Trap from your Deck to your hand. ${SINGLE-HOPT|Horticopia Ananandina}.'''
+strings = ['''Field''']
+
+[card.Horticopia-Elderica]
+name = '''Horticopia Elderica'''
+set = "Horticopia"
+setnumber = "${SETN|101}"
+effect = '''${HORTI|Horticopia Elderica} add 1 "Horticopia" Ritual Monster and 1 "Horticopia Paradise Banquet" from your Deck to your hand. ${SINGLE-HOPT|Horticopia Elderica}.'''
+strings = ['''Field''', '''Can be activated this turn.''']
+
+[card.Horticopia-Applewisia]
+name = '''Horticopia Applewisia'''
+set = "Horticopia"
+setnumber = "${SETN|102}"
+effect = '''While you control a face-up "Harvest Token" (Quick Effect): You can discard this card; Special Summon 1 Level 4 or lower Plant monster from your hand. ${HORTI|Horticopia Applewisia} send the top card of you Deck to the GY, then add 1 Level 4 or lower Plant monster from your GY to your hand. ${SINGLE-HOPT|Horticopia Applewisia}'''
+strings = ['''Field''']
+
+[card.Horticopia-Melonolana]
+name = '''Horticopia Melonolana'''
+set = "Horticopia"
+setnumber = "${SETN|103}"
+effect = '''${HORTI|Horticopia Melonolana} add 2 "Horticopia Garden Harvest" from your Deck or GY to your hand. ${SINGLE-HOPT|Horticopia Melonolana}.'''
+strings = ['''Field''']
+
+[card.Horticopia-Orangea]
+name = '''Horticopia Orangea'''
+set = "Horticopia"
+setnumber = "${SETN|104}"
+effect = '''While you control a face-up "Horticopia" Field Spell: You can Special Summon this card from your hand. ${HORTI|Horticopia Orangea} add 1 "Horticopia" monster from your Deck to your hand. ${SINGLE-HOPT|Horticopia Orangea}'''
+strings = ['''Field''']
+
+[card.Horticopia-Grapeony]
+name = '''Horticopia Grapeony'''
+set = "Horticopia"
+setnumber = "${SETN|105}"
+effect = '''${HORTI|Horticopia Grapeony} Set 1 "Horticopia" Trap from your GY. That Set card can be activated this turn. ${SINGLE-HOPT|Horticopia Grapeony}'''
+strings = ['''Field''']
+
+[card.Horticopia-Queen-Ambrosé]
+name = '''Horticopia Queen Ambrosé'''
+set = "Horticopia"
+setnumber = "${SETN|106}"
+effect = '''
+You can Ritual Summon this card with "Horticopia Paradise Banquet". This card's original attribute is all attributes. When this card is Special Summoned: Place this card face-up in your Field Zone as a Field Spell. If this Ritual Summoned card is placed in the Field Zone: You can Special Summon 1 "Harvest Token" (Plant/level 1/ATK 0/DEF 1000) with the original Attribute of that Field Spell you control, then increase the Levels of all "Harvest Tokens" you control with a different Attribute than that token by 1. It's gains DEF is equal to its Level x 100. It cannot be Tributed and cannot be used as material for a Fusion, Synchro, or Link Summon. You can only use this effect of "Horticopia Queen Ambrosé" once per turn. If this Ritual Summoned card is face-up in the Field Zone, and the total Levels of all "Harvest Tokens" you control is 100 or more, you win the Duel.'''
+strings = ['''Field''', '''Token''', '''Cannot be Tributed''', '''Cannot be used as material for a Fusion, Synchro, or Link Summon.''', '''Original DEF is equal to its Level x 200.''']
+
+[card.Botanice-Paladin-of-Horticopia]
+name = '''Botanice, Paladin of Horticopia'''
+set = "Horticopia"
+setnumber = "${SETN|107}"
+effect = '''You can Ritual Summon this card with "Horticopia Paradise Banquet".'''
+
+[card.Horticopia-Wildrosera]
+name = '''Horticopia Wildrosera'''
+set = "Horticopia"
+setnumber = "${SETN|108}"
+effect = '''You can Ritual Summon this card with "Horticopia Paradise Banquet". This card's original attribute is also EARTH, WATER, FIRE, WIND and LIGHT. When this card is Special Summoned: Place this card face-up in your Field Zone as a Field Spell. If this Ritual Summoned card is placed in the Field Zone: You can reveal 1 "Horticopia Queen Ambrosé" in your hand, Deck, GY, or Field Zone; Apply the revealed card's effect that Special Summons a token, then draw 3 cards, the discard 1 card. ${SINGLE-HOPT|Horticopia Wildrosera}.'''
+
+[card.Horticopia-Garden-Harvest]
+name = '''Horticopia Garden Harvest'''
+set = "Horticopia"
+setnumber = "${SETN|120}"
+effect = '''${FIELDS}. Reveal 1 "Horticopia Queen Ambrosé" in your hand, Deck, GY, or Field Zone; Activate 1 of these effects;
+● Apply that revealed card's effect that Special Summons a token, also Place 1 "Horticopia" monster from your hand or GY face-up in your Field Zone as a Field Spell.
+● Apply that revealed card's effect that Special Summons a token, also increase the Levels of all "Harvest Tokens" you control by 2.
+● Banish 1 face-up "Harvest Token" you control, and if you do, increase the Levels of all "Harvest Tokens" you control with a different Attribute than that token by the Level the Banished token had on the field.'''
+strings = ['''Place in Field Zone''', '''1 Token, increase Levels''', '''Tribute, increase Levels''']
+
+[card.Horticopia-Crop-Rotation]
+name = '''Horticopia Crop Rotation'''
+set = "Horticopia"
+setnumber = "${SETN|121}"
+effect = '''${FIELDS}. Banish 1 Plant-Type monster from your GY, then reveal 1 "Horticopia Queen Ambrosé" in your hand, Deck, GY, or Field Zone; Place 1 "Horticopia" monster from your hand or GY face-up in your Field Zone as a Field Spell, also apply the revealed card's effect that Special Summons a token.'''
+
+[card.Horticopia-Paradise-Banquet]
+name = '''Horticopia Paradise Banquet'''
+set = "Horticopia"
+setnumber = "${SETN|122}"
+effect = '''${FIELDS}. This card can be used to Ritual Summon any "Horticopia" Ritual Monster. You must also Tribute monsters from your hand or field whose total Levels equal or exceed the Level of the Ritual Monster you Ritual Summon.'''
+
+[card.Harvest-Token1]
+name = '''Harvest Token'''
+setnumber = "${SETN|901}"
+effect = "${HARVEST-TOKEN}"
+
+[card.Harvest-Token2]
+name = '''Harvest Token'''
+setnumber = "${SETN|902}"
+effect = "${HARVEST-TOKEN}"
+
+[card.Harvest-Token3]
+name = '''Harvest Token'''
+setnumber = "${SETN|903}"
+effect = "${HARVEST-TOKEN}"
+
+[card.Harvest-Token4]
+name = '''Harvest Token'''
+setnumber = "${SETN|904}"
+effect = "${HARVEST-TOKEN}"
+
+[card.Harvest-Token5]
+name = '''Harvest Token'''
+setnumber = "${SETN|905}"
+effect = "${HARVEST-TOKEN}"
+
+[card.Harvest-Token6]
+name = '''Harvest Token'''
+setnumber = "${SETN|906}"
+effect = "${HARVEST-TOKEN}"
+
+[card.Harvest-Token7]
+name = '''Harvest Token'''
+setnumber = "${SETN|907}"
+effect = "${HARVEST-TOKEN}"
+
+[card.Harvest-Token8]
+name = '''Harvest Token'''
+setnumber = "${SETN|908}"
+effect = "${HARVEST-TOKEN}"

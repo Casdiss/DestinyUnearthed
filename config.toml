@@ -1,0 +1,19 @@
+locale = 'en'
+
+[gamedir.main]
+path = '''C:\ProjectIgnis'''
+default = true
+
+[expansion.DestinyUnearthed]
+recipe = ["DestinyUnearthed-vals.toml", "DestinyUnearthed-en.toml"]
+default = true
+
+[picset.regular]
+mode = 'proxy'
+size = '512x'
+ext = 'jpg'
+artsize = 'cover'
+year = '2024'
+author = 'Casdis'
+field = true
+default = true

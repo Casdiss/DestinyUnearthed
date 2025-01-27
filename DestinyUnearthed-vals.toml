@@ -1,0 +1,305 @@
+[macro]
+_SETN = "UNET-$1$2"
+
+[set.sustainium]
+name = "sustainium"
+code = 0x999
+[set.Horticopia]
+name = "Horticopia"
+code = 0x888
+
+[card.Sustainium-Ore-Node]
+id = 58998000
+ot = "CUSTOM"
+set = "sustainium"
+type = "monster tuner effect"
+attribute = "earth"
+level = 5
+race = "rock"
+atk = 0
+def = 1850
+
+[card.Sustainium-Mines-Groundbreaker]
+id = 58998001
+ot = "CUSTOM"
+set = "sustainium"
+type = "monster effect"
+attribute = "earth"
+level = 3
+race = "rock"
+atk = 500
+def = 1100
+
+[card.Sustainium-Mines-Geologist]
+id = 58998002
+ot = "CUSTOM"
+set = "sustainium"
+type = "monster tuner effect"
+attribute = "earth"
+level = 1
+race = "rock"
+atk = 100
+def = 200
+
+[card.Sustainium-Mines-Deep-Diver]
+id = 58998003
+ot = "CUSTOM"
+set = "sustainium"
+type = "monster effect"
+attribute = "earth"
+level = 3
+race = "rock"
+atk = 1300
+def = 300
+
+[card.Sustainium-Mines-Foreman]
+id = 58998004
+ot = "CUSTOM"
+set = "sustainium"
+type = "monster effect"
+attribute = "earth"
+level = 3
+race = "rock"
+atk = 1600
+def = 1200
+
+[card.Sustainium-Mines-Heavy-Mechanist]
+id = 58998005
+ot = "CUSTOM"
+set = "sustainium"
+type = "monster xyz effect"
+attribute = "earth"
+level = 3
+race = "rock"
+atk = 1500
+def = 1900
+
+[card.Sustainium-Powered-Compression-Forger]
+id = 58998006
+ot = "CUSTOM"
+set = "sustainium"
+type = "monster xyz tuner effect"
+attribute = "water"
+level = 5
+race = "machine"
+atk = 1800
+def = 2100
+
+[card.Sustainium-Powered-Diamond-Force-Compactor]
+id = 58998007
+ot = "CUSTOM"
+set = "sustainium"
+type = "monster xyz tuner effect"
+attribute = "water"
+level = 7
+race = "machine"
+atk = 2200
+def = 2900
+
+[card.Sustainium-Crude-Ore-Refining]
+id = 58998020
+ot = "CUSTOM"
+set = "sustainium"
+type = "spell"
+
+[card.Sustainium-Mines]
+id = 58998022
+ot = "CUSTOM"
+set = "sustainium"
+type = "spell field"
+
+[card.Horticopia-Ananandina]
+id = 58998100
+ot = "CUSTOM"
+set = "Horticopia"
+type = "monster effect"
+attribute = "earth"
+level = 1
+race = "plant"
+atk = 0
+def = 200
+
+[card.Horticopia-Elderica]
+id = 58998101
+ot = "CUSTOM"
+set = "Horticopia"
+type = "monster effect"
+attribute = "water"
+level = 2
+race = "plant"
+atk = 0
+def = 400
+
+[card.Horticopia-Applewisia]
+id = 58998102
+ot = "CUSTOM"
+set = "Horticopia"
+type = "monster effect"
+attribute = "fire"
+level = 3
+race = "plant"
+atk = 0
+def = 500
+
+[card.Horticopia-Melonolana]
+id = 58998103
+ot = "CUSTOM"
+set = "Horticopia"
+type = "monster effect"
+attribute = "wind"
+level = 4
+race = "plant"
+atk = 0
+def = 800
+
+[card.Horticopia-Orangea]
+id = 58998104
+ot = "CUSTOM"
+set = "Horticopia"
+type = "monster effect"
+attribute = "light"
+level = 5
+race = "plant"
+atk = 0
+def = 700
+
+[card.Horticopia-Grapeony]
+id = 58998105
+ot = "CUSTOM"
+set = "Horticopia"
+type = "monster effect"
+attribute = "dark"
+level = 3
+race = "plant"
+atk = 0
+def = 400
+
+[card.Horticopia-Queen-Ambrosé]
+id = 58998106
+ot = "CUSTOM"
+set = "Horticopia"
+type = "monster effect ritual"
+attribute = "earth"
+level = 9
+race = "plant"
+atk = 0
+def = 1800
+
+[card.Botanice-Paladin-of-Horticopia]
+id = 58998107
+ot = "CUSTOM"
+set = "Horticopia"
+type = "monster effect ritual"
+attribute = "light"
+level = 6
+race = "warrior"
+atk = 0
+def = 2550
+
+[card.Horticopia-Wildrosera]
+id = 58998108
+ot = "CUSTOM"
+set = "Horticopia"
+type = "monster effect ritual"
+attribute = "dark"
+level = 6
+race = "plant"
+atk = 0
+def = 1200
+
+[card.Horticopia-Garden-Harvest]
+id = 58998120
+ot = "CUSTOM"
+set = "Horticopia"
+type = "spell"
+
+[card.Horticopia-Crop-Rotation]
+id = 58998121
+ot = "CUSTOM"
+set = "Horticopia"
+type = "trap"
+
+[card.Horticopia-Paradise-Banquet]
+id = 58998122
+ot = "CUSTOM"
+set = "Horticopia"
+type = "spell ritual"
+
+[card.Harvest-Token1]
+id = 58998901
+ot = "CUSTOM"
+type = "monster normal token"
+attribute = "earth"
+race = "plant"
+level = 1
+def = 1000
+
+[card.Harvest-Token2]
+id = 58998902
+alias = 58998901
+ot = "CUSTOM"
+type = "monster normal token"
+attribute = "water"
+race = "plant"
+level = 1
+def = 1000
+
+[card.Harvest-Token3]
+id = 58998903
+alias = 58998901
+ot = "CUSTOM"
+type = "monster normal token"
+attribute = "fire"
+race = "plant"
+level = 1
+def = 1000
+
+[card.Harvest-Token4]
+id = 58998904
+alias = 58998901
+ot = "CUSTOM"
+type = "monster normal token"
+attribute = "wind"
+race = "plant"
+level = 1
+def = 1000
+
+[card.Harvest-Token5]
+id = 58998905
+alias = 58998901
+ot = "CUSTOM"
+type = "monster normal token"
+attribute = "light"
+race = "plant"
+level = 1
+def = 1000
+
+[card.Harvest-Token6]
+id = 58998906
+alias = 58998901
+ot = "CUSTOM"
+type = "monster normal token"
+attribute = "dark"
+race = "plant"
+level = 1
+def = 1000
+
+[card.Harvest-Token7]
+id = 58998907
+alias = 58998901
+ot = "CUSTOM"
+type = "monster normal token"
+attribute = "earth water fire wind light dark"
+race = "plant"
+level = 1
+def = 1000
+
+[card.Harvest-Token8]
+id = 58998908
+alias = 58998901
+ot = "CUSTOM"
+type = "monster normal token"
+attribute = "all"
+race = "plant"
+level = 1
+def = 1000
