@@ -8,6 +8,9 @@ code = 0x999
 name = "Horticopia"
 code = 0x888
 
+[counter.harvest]
+code = 0x1888
+
 [card.Sustainium-Ore-Node]
 id = 58998000
 ot = "CUSTOM"
@@ -178,7 +181,7 @@ def = 400
 id = 58998106
 ot = "CUSTOM"
 set = "Horticopia"
-type = "monster effect ritual"
+type = "monster effect fusion"
 attribute = "earth"
 level = 9
 race = "plant"
@@ -207,7 +210,7 @@ race = "plant"
 atk = 0
 def = 1200
 
-[card.Horticopia-Garden-Harvest]
+[card.Horticopia-Garden-Tending]
 id = 58998120
 ot = "CUSTOM"
 set = "Horticopia"
@@ -217,13 +220,19 @@ type = "spell"
 id = 58998121
 ot = "CUSTOM"
 set = "Horticopia"
-type = "trap"
+type = "spell quickplay"
 
-[card.Horticopia-Paradise-Banquet]
+[card.Horticopia-Paradise-Harvest]
 id = 58998122
 ot = "CUSTOM"
 set = "Horticopia"
 type = "spell ritual"
+
+[card.Horticopia-Sour-Patch]
+id = 58998123
+ot = "CUSTOM"
+set = "Horticopia"
+type = "trap"
 
 [card.Harvest-Token1]
 id = 58998901
@@ -231,7 +240,6 @@ ot = "CUSTOM"
 type = "monster normal token"
 attribute = "earth"
 race = "plant"
-level = 1
 def = 1000
 
 [card.Harvest-Token2]
@@ -241,7 +249,6 @@ ot = "CUSTOM"
 type = "monster normal token"
 attribute = "water"
 race = "plant"
-level = 1
 def = 1000
 
 [card.Harvest-Token3]
@@ -251,7 +258,6 @@ ot = "CUSTOM"
 type = "monster normal token"
 attribute = "fire"
 race = "plant"
-level = 1
 def = 1000
 
 [card.Harvest-Token4]
@@ -261,7 +267,6 @@ ot = "CUSTOM"
 type = "monster normal token"
 attribute = "wind"
 race = "plant"
-level = 1
 def = 1000
 
 [card.Harvest-Token5]
@@ -271,7 +276,6 @@ ot = "CUSTOM"
 type = "monster normal token"
 attribute = "light"
 race = "plant"
-level = 1
 def = 1000
 
 [card.Harvest-Token6]
@@ -281,7 +285,6 @@ ot = "CUSTOM"
 type = "monster normal token"
 attribute = "dark"
 race = "plant"
-level = 1
 def = 1000
 
 [card.Harvest-Token7]
@@ -291,7 +294,6 @@ ot = "CUSTOM"
 type = "monster normal token"
 attribute = "earth water fire wind light dark"
 race = "plant"
-level = 1
 def = 1000
 
 [card.Harvest-Token8]
@@ -301,5 +303,12 @@ ot = "CUSTOM"
 type = "monster normal token"
 attribute = "all"
 race = "plant"
-level = 1
+def = 1000
+
+[card.Harvest-Token9]
+id = 58998909
+alias = 58998901
+ot = "CUSTOM"
+type = "monster normal token"
+race = "plant"
 def = 1000

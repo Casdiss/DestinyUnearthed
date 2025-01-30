@@ -1,4 +1,4 @@
--- Horticopia Garden Harvest
+-- Horticopia Garden Tending
 local s,id=GetID()
 function s.initial_effect(c)
 	--Activate
@@ -20,12 +20,15 @@ function s.condition(e,tp)
 end
 function s.cost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.IsExistingMatchingCard(s.fltreveal,tp,LOCATION_GRAVE|LOCATION_DECK|LOCATION_HAND|LOCATION_FZONE,0,1,nil,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(s.fltreveal,tp,LOCATION_EXTRA,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-	local g=Duel.SelectMatchingCard(tp,s.fltreveal,tp,LOCATION_GRAVE|LOCATION_DECK|LOCATION_HAND|LOCATION_FZONE,0,1,1,nil,tp):GetFirst()
+	local g=Duel.GetMatchingGroup(s.fltreveal,tp,LOCATION_EXTRA,0,1,nil,tp):GetFirst()
 	Duel.ConfirmCards(1-tp,g)
 	g:RegisterFlagEffect(888,RESET_EVENT|RESETS_STANDARD|RESET_CHAIN,0,1)
 	e:SetLabelObject(g:GetCardEffect(888):GetLabelObject())
+end
+function s.fltreveal(c,tp)
+	return c:IsCode(58998106)
 end
 function s.target(e,tp,eg,ep,ev,re,r,rp,chk)
 	local te=e:GetLabelObject()
@@ -80,57 +83,45 @@ function s.activate(e,tp,eg,ep,ev,re,r,rp)
 		e:SetLabel(0)
 		e:SetLabelObject(nil)
 	elseif op==2 then
-		--Create 1 "Harvest Token" and increase lvls by 2
+		--Create 1 "Harvest Token" and and place 3 "Harvest Counters"
 		s.operation(e,tp,eg,ep,ev,re,r,rp)
 		e:SetLabel(0)
 		e:SetLabelObject(nil)
-		local g=Duel.GetMatchingGroup(s.lfilter,tp,LOCATION_MZONE,0,nil)
+		local g=Duel.GetMatchingGroup(s.lfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
 		local c=e:GetHandler()
 		local tc=g:GetFirst()
 		for tc in aux.Next(g) do
-			local e1=Effect.CreateEffect(c)
-			e1:SetType(EFFECT_TYPE_SINGLE)
-			e1:SetCode(EFFECT_UPDATE_LEVEL)
-			e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-			e1:SetValue(2)
-			e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-			tc:RegisterEffect(e1)
+			tc:AddCounter(0x1888,3)
 		end
 	elseif op==3 then
-		--Tribute 1 "Harvest Token" and increase lvls by its lvl
-		local g=Duel.GetMatchingGroup(s.lfilter2,tp,LOCATION_MZONE,0,nil)
+		--Tribute 1 "Harvest Token" and place "Harvest Counters" equal to its Level
+		local g=Duel.GetMatchingGroup(s.lfilter,tp,LOCATION_MZONE,LOCATION_MZONE,nil,tp)
 		local c=e:GetHandler()
 		local tc=g:GetFirst()
-		local rg=Duel.SelectMatchingCard(tp,s.rfilter,tp,LOCATION_MZONE,0,1,1,nil,e,tp)
-		e:SetLabel(0)
-		e:SetLabelObject(nil)
+		local rg=Duel.SelectMatchingCard(tp,s.rfilter,tp,LOCATION_MZONE,LOCATION_MZONE,1,1,nil,e,tp)
 		if #rg>0 then 
-			e:SetLabel(rg:GetFirst():GetLevel())
+			e:SetLabel(rg:GetFirst():GetCounter(0x1888))
 			Duel.Remove(rg,POS_FACEUP,REASON_EFFECT)
+			local og=Duel.GetOperatedGroup()
+			og:KeepAlive()
+			e:SetLabelObject(og)
 			for tc in aux.Next(g) do
-				local e1=Effect.CreateEffect(c)
-				e1:SetType(EFFECT_TYPE_SINGLE)
-				e1:SetCode(EFFECT_UPDATE_LEVEL)
-				e1:SetProperty(EFFECT_FLAG_CANNOT_DISABLE)
-				e1:SetValue(e:GetLabel())
-				e1:SetReset(RESET_EVENT+RESETS_STANDARD)
-				tc:RegisterEffect(e1)
+				local ec=e:GetLabelObject():GetFirst()
+				if not (tc:GetAttribute()==ec:GetAttribute()) then
+					tc:AddCounter(0x1888,e:GetLabel())
+				end
 			end
 		end
 	end
+	e:SetLabel(0)
+	e:SetLabelObject(nil)
 end
 function s.rfilter(c,e,tp)
 	return c:IsAbleToRemove() and not c:IsImmuneToEffect(e)
-		and c:IsFaceup() and c:IsCode(58998901) 
+		and c:IsFaceup() and c:IsCode(58998901) and c:IsOwner(tp)
 end
-function s.lfilter(c)
-	return c:IsFaceup() and c:IsCode(58998901)
-end
-function s.lfilter2(c)
-	return c:IsFaceup() and c:IsCode(58998901) and not (c:GetAttribute()==token:GetAttribute())
-end
-function s.fltreveal(c,tp)
-	return c:IsCode(58998106)
+function s.lfilter(c,tp)
+	return c:IsFaceup() and c:IsCode(58998901) and c:IsOwner(tp)
 end
 function s.operation(e,tp,eg,ep,ev,re,r,rp)
 	local te=e:GetLabelObject()

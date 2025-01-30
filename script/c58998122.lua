@@ -1,4 +1,4 @@
--- Horticopia Paradise Banquet
+-- Horticopia Paradise Harvest
 local s,id=GetID()
 function s.initial_effect(c)
 	e1=Ritual.AddProcGreater({handler=c,filter=s.ritualfil})

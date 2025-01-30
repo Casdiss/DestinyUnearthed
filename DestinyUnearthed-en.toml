@@ -1,3 +1,6 @@
+[counter.harvest]
+name = "Harvest Counter"
+
 [macro]
 SETN = "${_SETN|EN|$1}"
 DISCARD-COST-SELF = '''You can discard this card;'''
@@ -9,9 +12,10 @@ SS-FRIEND-HAND = '''You can Special Summon 1 "$1" monster from your hand'''
 DIG-FRIEND-HAND = '''You can excavate the top $1 cards of your Deck, and if you do, you can add 1 excavated "$2" card to your hand, also place the rest on the bottom of your Deck in any order'''
 DIG-FRIEND1-HAND = '''You can excavate the top card of your Deck, and if you do, you can add 1 excavated "$1" card to your hand, also place the rest on the bottom of your Deck in any order'''
 STACK-ROCK = '''You can place $1 of your banished Rock monsters on top of your Deck'''
-HORTI = '''When this card is Normal or Special Summoned: Place this card face-up in your Field Zone as a Field Spell. If this card is placed in the Field Zone: You can reveal 1 "Horticopia Queen Ambrosé" in your hand, Deck, GY, or Field Zone; Apply the revealed card's effect that Special Summons a token, then'''
-HARVEST-TOKEN = '''This Token gains DEF equal to its Level x 100. This Token cannot be Tributed and cannot be used as material for a Fusion, Synchro, or Link Summon.'''
+HORTI = '''When this card is Normal or Special Summoned: Place this card face-up in your Field Zone as a Field Spell. If this card is placed in the Field Zone: You can reveal 1 "Horticopia Queen Ambrosé" in your Extra Deck; Apply the revealed card's effect that Special Summons a token, then'''
+HARVEST-TOKEN = '''This token's Level is equal to the number of "Harvest Counters" on it and gains DEF equal to its Level x 100. This Token cannot be Tributed and cannot be used as material for a Fusion, Synchro, or Link Summon.'''
 FIELDS = '''Activate only if you control a face-up "Horticopia" Field Spell'''
+QUEENS = '''Reveal 1 "Horticopia Queen Ambrosé" in your Extra Deck'''
 
 [card.Sustainium-Ore-Node]
 name = '''Sustainium Ore Node'''
@@ -101,7 +105,7 @@ strings = ['''Field''']
 name = '''Horticopia Elderica'''
 set = "Horticopia"
 setnumber = "${SETN|101}"
-effect = '''${HORTI|Horticopia Elderica} add 1 "Horticopia" Ritual Monster and 1 "Horticopia Paradise Banquet" from your Deck to your hand. ${SINGLE-HOPT|Horticopia Elderica}.'''
+effect = '''${HORTI|Horticopia Elderica} add 1 "Horticopia" Ritual Monster and 1 "Horticopia Paradise Harvest" from your Deck to your hand. ${SINGLE-HOPT|Horticopia Elderica}.'''
 strings = ['''Field''', '''Can be activated this turn.''']
 
 [card.Horticopia-Applewisia]
@@ -115,7 +119,7 @@ strings = ['''Field''']
 name = '''Horticopia Melonolana'''
 set = "Horticopia"
 setnumber = "${SETN|103}"
-effect = '''${HORTI|Horticopia Melonolana} add 2 "Horticopia Garden Harvest" from your Deck or GY to your hand. ${SINGLE-HOPT|Horticopia Melonolana}.'''
+effect = '''${HORTI|Horticopia Melonolana} add 2 "Horticopia Garden Tending" from your Deck or GY to your hand. ${SINGLE-HOPT|Horticopia Melonolana}.'''
 strings = ['''Field''']
 
 [card.Horticopia-Orangea]
@@ -136,80 +140,92 @@ strings = ['''Field''']
 name = '''Horticopia Queen Ambrosé'''
 set = "Horticopia"
 setnumber = "${SETN|106}"
-effect = '''
-You can Ritual Summon this card with "Horticopia Paradise Banquet". This card's original attribute is all attributes. When this card is Special Summoned: Place this card face-up in your Field Zone as a Field Spell. If this Ritual Summoned card is placed in the Field Zone: You can Special Summon 1 "Harvest Token" (Plant/level 1/ATK 0/DEF 1000) with the original Attribute of that Field Spell you control, then increase the Levels of all "Harvest Tokens" you control with a different Attribute than that token by 1. It's gains DEF is equal to its Level x 100. It cannot be Tributed and cannot be used as material for a Fusion, Synchro, or Link Summon. You can only use this effect of "Horticopia Queen Ambrosé" once per turn. If this Ritual Summoned card is face-up in the Field Zone, and the total Levels of all "Harvest Tokens" you control is 100 or more, you win the Duel.'''
-strings = ['''Field''', '''Token''', '''Cannot be Tributed''', '''Cannot be used as material for a Fusion, Synchro, or Link Summon.''', '''Original DEF is equal to its Level x 200.''']
+effect = '''"Horticopia Wildrosera" + 2 "Horticopia" monsters
+Must be Fusion Summoned. This card's original attribute is all attributes. When this card is Special Summoned: Place this card face-up in your Field Zone as a Field Spell. If this card is placed in the Field Zone: You can Special Summon 1 "Harvest Token" (Plant/level ?/ATK 0/DEF 1000) with the original Attribute of a Field Spell you control and place 1 "Harvest Counter" it, then place 1 "Harvest Counter" on each "Harvest Tokens" you own with a different Attribute than that token. It's Level is equal to the number of "Harvest Counters" on it and it gains DEF is equal to that number x 100. It cannot be Tributed and cannot be used as material for a Fusion, Synchro, or Link Summon. If this Fusion Summoned card is face-up in the Field Zone, and the total number of "Harvest Counters" on "Harvest Tokens" you own is 100 or more, you win the Duel.'''
+strings = ['''Field''', '''Token''', '''Cannot be Tributed''', '''Cannot be used as material for a Fusion, Synchro, or Link Summon.''', '''Level is equal to the number of "Harvest Counters" on this card''', '''Gains DEF equal to its Level x 100.''']
 
 [card.Botanice-Paladin-of-Horticopia]
 name = '''Botanice, Paladin of Horticopia'''
 set = "Horticopia"
 setnumber = "${SETN|107}"
-effect = '''You can Ritual Summon this card with "Horticopia Paradise Banquet".'''
+effect = '''You can Ritual Summon this card with "Horticopia Paradise Harvest".'''
 
 [card.Horticopia-Wildrosera]
 name = '''Horticopia Wildrosera'''
 set = "Horticopia"
 setnumber = "${SETN|108}"
-effect = '''You can Ritual Summon this card with "Horticopia Paradise Banquet". This card's original attribute is also EARTH, WATER, FIRE, WIND and LIGHT. When this card is Special Summoned: Place this card face-up in your Field Zone as a Field Spell. If this Ritual Summoned card is placed in the Field Zone: You can reveal 1 "Horticopia Queen Ambrosé" in your hand, Deck, GY, or Field Zone; Apply the revealed card's effect that Special Summons a token, then draw 3 cards, the discard 1 card. ${SINGLE-HOPT|Horticopia Wildrosera}.'''
+effect = '''You can Ritual Summon this card with "Horticopia Paradise Harvest". This card's original attribute is also EARTH, WATER, FIRE, WIND and LIGHT. When this card is Special Summoned: Place this card face-up in your Field Zone as a Field Spell. If this Ritual Summoned card is placed in the Field Zone: You can reveal 1 "Horticopia Queen Ambrosé" in your Extra Deck; Apply the revealed card's effect that Special Summons a token, then draw 3 cards, then discard 1 card. ${SINGLE-HOPT|Horticopia Wildrosera}.'''
 
-[card.Horticopia-Garden-Harvest]
-name = '''Horticopia Garden Harvest'''
+[card.Horticopia-Garden-Tending]
+name = '''Horticopia Garden Tending'''
 set = "Horticopia"
 setnumber = "${SETN|120}"
-effect = '''${FIELDS}. Reveal 1 "Horticopia Queen Ambrosé" in your hand, Deck, GY, or Field Zone; Activate 1 of these effects;
-● Apply that revealed card's effect that Special Summons a token, also Place 1 "Horticopia" monster from your hand or GY face-up in your Field Zone as a Field Spell.
-● Apply that revealed card's effect that Special Summons a token, also increase the Levels of all "Harvest Tokens" you control by 2.
-● Banish 1 face-up "Harvest Token" you control, and if you do, increase the Levels of all "Harvest Tokens" you control with a different Attribute than that token by the Level the Banished token had on the field.'''
-strings = ['''Place in Field Zone''', '''1 Token, increase Levels''', '''Tribute, increase Levels''']
+effect = '''${FIELDS}. ${QUEENS}; Activate 1 of these effects;
+● Place 1 "Horticopia" monster from your hand or GY face-up in your Field Zone as a Field Spell.
+● Apply the revealed card's effect that Special Summons a token, also place 3 "Harvest Counters" on each "Harvest Tokens" you own.
+● Banish 1 face-up "Harvest Token" you own, and if you do, place "Havest Counters" on each "Harvest Tokens" you own with a different Attribute than the banished token equal to the number of those counters the banished token had on the field.'''
+strings = ['''Place in Field Zone''', '''1 Token, Place 3 counters''', '''Tribute, Place Tribute's counters''']
 
 [card.Horticopia-Crop-Rotation]
 name = '''Horticopia Crop Rotation'''
 set = "Horticopia"
 setnumber = "${SETN|121}"
-effect = '''${FIELDS}. Banish 1 Plant-Type monster from your GY, then reveal 1 "Horticopia Queen Ambrosé" in your hand, Deck, GY, or Field Zone; Place 1 "Horticopia" monster from your hand or GY face-up in your Field Zone as a Field Spell, also apply the revealed card's effect that Special Summons a token.'''
+effect = '''${FIELDS}. Banish 1 Plant-Type monster from your GY; Place 1 "Horticopia" monster from your hand or GY face-up in your Field Zone as a Field Spell. You can banish 1 "Harvest token" you own on the field and this card from your GY; Immediately after this effect resolves, Ritual Summon 1 "Horticopia" Ritual Monster from your hand, by Tributing monsters from your hand or field whose total Levels equal or exceed the Level of the Ritual Monster you Ritual Summon.'''
 
-[card.Horticopia-Paradise-Banquet]
-name = '''Horticopia Paradise Banquet'''
+[card.Horticopia-Paradise-Harvest]
+name = '''Horticopia Paradise Harvest'''
 set = "Horticopia"
 setnumber = "${SETN|122}"
 effect = '''${FIELDS}. This card can be used to Ritual Summon any "Horticopia" Ritual Monster. You must also Tribute monsters from your hand or field whose total Levels equal or exceed the Level of the Ritual Monster you Ritual Summon.'''
 
+[card.Horticopia-Sour-Patch]
+name ='''Horticopia Sour Patch'''
+set = "Horticopia"
+setnumber = "${SETN|123}"
+strings = ['''Cannot be Tributed''', '''Cannot be used as material for a Fusion, Synchro, or Link Summon.''', '''Level is equal to the number of "Harvest Counters" on this card''', '''Gains DEF equal to its Level x 100.''']
+effect = '''When your opponent would Special Summon a monster(s), while you control a face-up "Horticopia" Field Spell: Negate the Summon, and if you do, destroy that monster, then Special Summon 1 "Harvest Token" (Plant/level ?/ATK 0/DEF 1000) to your opponent's side of the field, then place 1 "Harvest Counter" it, then place 1 "Harvest Counter" on each "Harvest Token" you own with an Attribute. It's Level is equal to the number of "Harvest Counters" on it and it gains DEF is equal to that number x 100. It cannot change its battle position and cannot be Tributed and cannot be used as material for a Fusion, Synchro, or Link Summon.'''
+
 [card.Harvest-Token1]
-name = '''Harvest Token'''
+name = '''Harvest Token - Pineapple'''
 setnumber = "${SETN|901}"
 effect = "${HARVEST-TOKEN}"
 
 [card.Harvest-Token2]
-name = '''Harvest Token'''
+name = '''Harvest Token - Elderberry'''
 setnumber = "${SETN|902}"
 effect = "${HARVEST-TOKEN}"
 
 [card.Harvest-Token3]
-name = '''Harvest Token'''
+name = '''Harvest Token -  Apple'''
 setnumber = "${SETN|903}"
 effect = "${HARVEST-TOKEN}"
 
 [card.Harvest-Token4]
-name = '''Harvest Token'''
+name = '''Harvest Token - Watermelon'''
 setnumber = "${SETN|904}"
 effect = "${HARVEST-TOKEN}"
 
 [card.Harvest-Token5]
-name = '''Harvest Token'''
+name = '''Harvest Token -  Orange'''
 setnumber = "${SETN|905}"
 effect = "${HARVEST-TOKEN}"
 
 [card.Harvest-Token6]
-name = '''Harvest Token'''
+name = '''Harvest Token - Grape'''
 setnumber = "${SETN|906}"
 effect = "${HARVEST-TOKEN}"
 
 [card.Harvest-Token7]
-name = '''Harvest Token'''
+name = '''Harvest Token - Wild'''
 setnumber = "${SETN|907}"
-effect = "${HARVEST-TOKEN}"
+effect = "This token's original attribute is also EARTH, WATER, FIRE, WIND and LIGHT. ${HARVEST-TOKEN}"
 
 [card.Harvest-Token8]
-name = '''Harvest Token'''
+name = '''Harvest Token - Royal'''
 setnumber = "${SETN|908}"
+effect = "${HARVEST-TOKEN}"
+
+[card.Harvest-Token9]
+name = '''Harvest Token - Lemon'''
+setnumber = "${SETN|909}"
 effect = "${HARVEST-TOKEN}"

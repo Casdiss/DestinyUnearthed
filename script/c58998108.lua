@@ -10,7 +10,7 @@ function s.initial_effect(c)
 	e1:SetCode(EVENT_SPSUMMON_SUCCESS)
 	e1:SetOperation(s.smnop)
 	c:RegisterEffect(e1)
-	--Apply Queen Ambrosé's effect, then draw 2 cards
+	--Apply Queen Ambrosé's effect, then draw 3 cards, then discard 1
 	local e3=Effect.CreateEffect(c)
 	e3:SetDescription(aux.Stringid(id,1))
 	e3:SetCategory(CATEGORY_DRAW)
@@ -43,9 +43,9 @@ function s.monster(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.fldcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.IsExistingMatchingCard(s.fldreveal,tp,LOCATION_GRAVE|LOCATION_DECK|LOCATION_HAND|LOCATION_FZONE,0,1,nil,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(s.fldreveal,tp,LOCATION_EXTRA,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-	local g=Duel.SelectMatchingCard(tp,s.fldreveal,tp,LOCATION_GRAVE|LOCATION_DECK|LOCATION_HAND|LOCATION_FZONE,0,1,1,nil,tp):GetFirst()
+	local g=Duel.GetMatchingGroup(s.fldreveal,tp,LOCATION_EXTRA,0,1,nil,tp):GetFirst()
 	Duel.ConfirmCards(1-tp,g)
 	g:RegisterFlagEffect(888,RESET_EVENT|RESETS_STANDARD|RESET_CHAIN,0,1)
 	e:SetLabelObject(g:GetCardEffect(888):GetLabelObject())
@@ -57,16 +57,13 @@ function s.fldtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	local te=e:GetLabelObject()
 	local tg=te and te:GetTarget() or nil
 	if chkc then return tg and tg(e,tp,eg,ep,ev,re,r,rp,0,chkc) end
-	if chk==0 then return Duel.IsPlayerCanDraw(tp,2) end
+	if chk==0 then return Duel.IsPlayerCanDraw(tp,3) end
 	e:SetLabel(te:GetLabel())
 	e:SetLabelObject(te:GetLabelObject())
-	e:SetProperty(te:IsHasProperty(EFFECT_FLAG_CARD_TARGET) and EFFECT_FLAG_CARD_TARGET or 0)
 	if tg then
 		tg(e,tp,eg,ep,ev,re,r,rp,1)
 	end
 	e:SetLabelObject(te)
-	Duel.SetTargetPlayer(tp)
-	Duel.SetTargetParam(3)
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DRAW,nil,0,tp,3)
 	Duel.SetOperationInfo(0,CATEGORY_HANDES,nil,0,tp,1)
@@ -79,9 +76,8 @@ function s.fldop(e,tp,eg,ep,ev,re,r,rp)
 		s.operation(e,tp,eg,ep,ev,re,r,rp)
 	end
 	Duel.BreakEffect()
-	--Draw 2 cards, then discard 1
-	local p=Duel.GetChainInfo(0,CHAININFO_TARGET_PLAYER)
-	if Duel.Draw(p,3,REASON_EFFECT)==3 then
+	--Draw 3 cards, then discard 1
+	if Duel.Draw(tp,3,REASON_EFFECT)==3 then
 		Duel.ShuffleHand(tp)
 		Duel.BreakEffect()
 		Duel.DiscardHand(tp,nil,1,1,REASON_EFFECT+REASON_DISCARD)

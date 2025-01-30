@@ -52,8 +52,9 @@ function s.spfilter1(c,e,tp)
 	return c:IsRace(RACE_PLANT) and c:IsLevelBelow(4) and c:IsCanBeSpecialSummoned(e,0,tp,false,false,POS_FACEUP)
 end
 function s.sptg(e,tp,eg,ep,ev,re,r,rp,chk)
+	local c=e:GetHandler()
 	if chk==0 then return Duel.GetLocationCount(tp,LOCATION_MZONE)>0
-		and Duel.IsExistingMatchingCard(s.spfilter1,tp,LOCATION_HAND,0,1,nil,e,tp) end
+		and Duel.IsExistingMatchingCard(s.spfilter1,tp,LOCATION_HAND,0,1,c,e,tp) end
 	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON,nil,1,tp,LOCATION_HAND)
 end
 function s.spop(e,tp,eg,ep,ev,re,r,rp)
@@ -83,9 +84,9 @@ function s.monster(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.fldcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.IsExistingMatchingCard(s.fldreveal,tp,LOCATION_GRAVE|LOCATION_DECK|LOCATION_HAND|LOCATION_FZONE,0,1,nil,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(s.fldreveal,tp,LOCATION_EXTRA,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-	local g=Duel.SelectMatchingCard(tp,s.fldreveal,tp,LOCATION_GRAVE|LOCATION_DECK|LOCATION_HAND|LOCATION_FZONE,0,1,1,nil,tp):GetFirst()
+	local g=Duel.GetMatchingGroup(s.fldreveal,tp,LOCATION_EXTRA,0,1,nil,tp):GetFirst()
 	Duel.ConfirmCards(1-tp,g)
 	g:RegisterFlagEffect(888,RESET_EVENT|RESETS_STANDARD|RESET_CHAIN,0,1)
 	e:SetLabelObject(g:GetCardEffect(888):GetLabelObject())
@@ -100,12 +101,10 @@ function s.fldtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
 	e:SetLabel(te:GetLabel())
 	e:SetLabelObject(te:GetLabelObject())
-	e:SetProperty(te:IsHasProperty(EFFECT_FLAG_CARD_TARGET) and EFFECT_FLAG_CARD_TARGET or 0)
 	if tg then
 		tg(e,tp,eg,ep,ev,re,r,rp,1)
 	end
 	e:SetLabelObject(te)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_DECKDES,nil,0,tp,3)
 end
@@ -121,7 +120,7 @@ function s.fldop(e,tp,eg,ep,ev,re,r,rp)
 	end
 	Duel.BreakEffect()
 	--Mill 3
-	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)>2 then return end
+	if Duel.GetFieldGroupCount(tp,LOCATION_DECK,0)<2 then return end
 	Duel.DiscardDeck(tp,3,REASON_EFFECT)
 	--Return 1 Level 4 or lower Plant to the hand
 	if not e:GetHandler():IsRelateToEffect(e) then return end

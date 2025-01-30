@@ -43,9 +43,9 @@ function s.monster(e,tp,eg,ep,ev,re,r,rp)
 end
 function s.fldcost(e,tp,eg,ep,ev,re,r,rp,chk)
 	local c=e:GetHandler()
-	if chk==0 then return Duel.IsExistingMatchingCard(s.fldreveal,tp,LOCATION_GRAVE|LOCATION_DECK|LOCATION_HAND|LOCATION_FZONE,0,1,nil,tp) end
+	if chk==0 then return Duel.IsExistingMatchingCard(s.fldreveal,tp,LOCATION_EXTRA,0,1,nil,tp) end
 	Duel.Hint(HINT_SELECTMSG,tp,HINTMSG_CONFIRM)
-	local g=Duel.SelectMatchingCard(tp,s.fldreveal,tp,LOCATION_GRAVE|LOCATION_DECK|LOCATION_HAND|LOCATION_FZONE,0,1,1,nil,tp):GetFirst()
+	local g=Duel.GetMatchingGroup(s.fldreveal,tp,LOCATION_EXTRA,0,1,nil,tp):GetFirst()
 	Duel.ConfirmCards(1-tp,g)
 	g:RegisterFlagEffect(888,RESET_EVENT|RESETS_STANDARD|RESET_CHAIN,0,1)
 	e:SetLabelObject(g:GetCardEffect(888):GetLabelObject())
@@ -60,12 +60,10 @@ function s.fldtg(e,tp,eg,ep,ev,re,r,rp,chk,chkc)
 	if chk==0 then return true end
 	e:SetLabel(te:GetLabel())
 	e:SetLabelObject(te:GetLabelObject())
-	e:SetProperty(te:IsHasProperty(EFFECT_FLAG_CARD_TARGET) and EFFECT_FLAG_CARD_TARGET or 0)
 	if tg then
 		tg(e,tp,eg,ep,ev,re,r,rp,1)
 	end
 	e:SetLabelObject(te)
-	Duel.SetOperationInfo(0,CATEGORY_SPECIAL_SUMMON+CATEGORY_TOKEN,g,1,0,0)
 	Duel.SetOperationInfo(0,CATEGORY_TOHAND,nil,2,tp,LOCATION_DECK)
 end
 function s.fldflt(c)
